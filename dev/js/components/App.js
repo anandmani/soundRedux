@@ -1,16 +1,20 @@
-import React from 'react';
-import UserList from '../containers/user-list';
-import UserDetails from '../containers/user-detail';
+import React, {Component} from 'react';
+
+import NavBar from './NavBar.js';
+import Content from './Content.js';
+
+import 'bootstrap/dist/css/bootstrap.css';  //instead of giving path to this in html, just import it. import is provided by node js and directly looks in node modules!
 require('../../scss/style.scss');
 
-const App = () => (
-    <div>
-        <h2>User List</h2>
-        <UserList />
-        <hr />
-        <h2>User Details</h2>
-        <UserDetails />
-    </div>
-);
 
-export default App;
+export default class App extends Component{
+  render() {
+    console.log("Current state is:"+this.props.store);
+    return (
+      <div>
+        <NavBar/>
+        <Content/>
+      </div>
+    );
+  }
+}

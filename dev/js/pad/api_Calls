@@ -1,0 +1,12 @@
+https://www.googleapis.com/youtube/v3
+
+AIzaSyCSrcWsGzFXcm74Huk43YTAoWwYMpRXfYI
+
+
+{base_URL}/search?part=snippet
+                     &topicId=/m/05z1_
+                     &type=video
+                     &key={YOUR_API_KEY}
+
+
+                     https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=Dota+2&type=video&key=AIzaSyCSrcWsGzFXcm74Huk43YTAoWwYMpRXfYI
