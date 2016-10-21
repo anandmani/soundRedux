@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import NavBar from './NavBar.js';
 import Content from './Content.js';
+import Board from './Board.js';
 
 import 'bootstrap/dist/css/bootstrap.css';  //instead of giving path to this in html, just import it. import is provided by node js and directly looks in node modules!
 require('../../scss/style.scss');
@@ -15,6 +16,7 @@ export default class App extends Component{
       <div>
         <NavBar/>
         <Content/>
+        <Board/>
       </div>
     );
   }

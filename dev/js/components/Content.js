@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import tabOneContentAction from '../actions/tabOneContentAction.js';
 import {bindActionCreators} from 'redux';
+import Board from './Board.js';
 
 class Content extends Component{
 
@@ -13,13 +14,7 @@ class Content extends Component{
       console.log("Next page token: "+response.nextPageToken);
 
       response.items.map(function(item, index){
-      // console.log("");
-      // console.log("Video Index: "+ ++index);//note this is index in page! not index of all results. Index is a string index + 1 appends 1. thus, ++index
-      // console.log("Video Title: "+item.snippet.title);
-      // console.log("Video Id: "+item.id.videoId);
-      // console.log("Video Desc: "+item.snippet.description);
-      // console.log("Channel Title: "+item.snippet.channelTitle);
-      // console.log("Thumbnail url: "+item.snippet.thumbnails.high.url);//all are 360x480?
+
       var videoMeta = {
         videoIndex: index+1, //Need to input logic for next page
         videoTitle: item.snippet.title,
@@ -37,16 +32,13 @@ class Content extends Component{
       })
 
       request.execute(function(response){
-        // console.log("Video views: "+response.items[0].statistics.viewCount);
-        // console.log("Video Likes: "+response.items[0].statistics.likeCount);
-        // console.log("Video Dislikes: "+response.items[0].statistics.dislikeCount);
+
         videoMeta.videoViews = response.items[0].statistics.viewCount;
         videoMeta.likeCount = response.items[0].statistics.likeCount;
         videoMeta.dislikeCount = response.items[0].statistics.dislikeCount;
         console.log(videoMeta);
         that.props.tabOneContentAction(videoMeta);
 
-        //Update state
       });
 
     })
@@ -58,8 +50,8 @@ class Content extends Component{
             part: "snippet",
             type: "video",
             order: "viewCount",
-            q: "Dota+2",
-            maxResults: 25
+            q: this.props.navTitlesState,
+            maxResults: 2
           })
           request.execute(this.onContentFetch.bind(this));
   }
@@ -74,33 +66,20 @@ class Content extends Component{
     // console.log("xhr response"+xhr.response);
   }
 
-  componentWillMount(){
-    gapi.load("client",this.onGapiLoad.bind(this));
-  }
+  // componentWillMount(){
+  //   gapi.load("client",this.onGapiLoad.bind(this));  //Should not be here. Because, the api call must be made when tabs change. 
+  // }
 
   render(){
     console.log("Inside Content - Render");
     console.log("navState"+this.props.navState);
+    gapi.load("client",this.onGapiLoad.bind(this));
+
     return(
       <div>
         <div>
           Body{this.props.navState}
         </div>
-        {this.props.videosState.map(function(item, index){
-          return (
-            <div key={index} className ="card col-md-3">
-              <div className="card-img-wrap">
-                <img className="card-img" src={item.thumbnailUrl} alt="Card image cap"></img>
-              </div>
-              <div className="card-block">
-                <h4 className="card-title">{item.videoTitle}</h4>
-                <h5 className="card-views">{item.videoViews}</h5>
-                <h5 className="card-likes">{item.likeCount}</h5>
-                <h5 className="card-dislikes">{item.dislikeCount}</h5>
-              </div>
-            </div>
-          );
-        })}
 
     </div>
     );
@@ -108,9 +87,9 @@ class Content extends Component{
 }
 
 const mapStateToProps = function(state){
-  return({
+  return({  //Subscribing the component only to the (sub)states mentioned in this object. not all (sub)states in the state-tree. When these states, change, the component re-renders.
     navState: state.navState,
-    videosState: state.tabOneContentState
+    navTitlesState: state.navTitlesState
   });
 }
 

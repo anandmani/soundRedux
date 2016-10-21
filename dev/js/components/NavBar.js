@@ -16,8 +16,8 @@ class NavBar extends Component{
     console.log("Active key is "+this.props.navState);
     return( //activeKey should be a string so, type coercing it
       <Nav bsStyle="tabs" activeKey={this.props.navState+""} onSelect={this.handleSelect.bind(this)}>
-        <NavItem eventKey="1">Dota 2</NavItem>
-        <NavItem eventKey="2" title="Item">Kenny Sebastian</NavItem>
+        <NavItem eventKey="1">{this.props.navTitlesState[1].replace("+"," ")}</NavItem>
+        <NavItem eventKey="2" title="Item">{this.props.navTitlesState[2].replace("+"," ")}</NavItem>
         <NavItem eventKey="3" disabled>NavItem 3 content</NavItem>
         <NavDropdown eventKey="4" title="Dropdown" id="nav-dropdown">
           <MenuItem eventKey="4.1">Action</MenuItem>
@@ -37,6 +37,7 @@ const mapStateToProps = function(state){
   console.log("state"+state);
   return{
       navState: state.navState,
+      navTitlesState: state.navTitlesState
   }
 }
 
