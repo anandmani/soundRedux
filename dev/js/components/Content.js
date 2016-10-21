@@ -50,7 +50,7 @@ class Content extends Component{
             part: "snippet",
             type: "video",
             order: "viewCount",
-            q: this.props.navTitlesState,
+            q: this.props.navTitlesState[this.props.navState],
             maxResults: 2
           })
           request.execute(this.onContentFetch.bind(this));
@@ -67,7 +67,7 @@ class Content extends Component{
   }
 
   // componentWillMount(){
-  //   gapi.load("client",this.onGapiLoad.bind(this));  //Should not be here. Because, the api call must be made when tabs change. 
+  //   gapi.load("client",this.onGapiLoad.bind(this));  //Should not be here. Because, the api call must be made when tabs change.
   // }
 
   render(){
