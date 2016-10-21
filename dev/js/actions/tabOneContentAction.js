@@ -1,4 +1,4 @@
-const tabOneContent = function(videoMeta){
+const tabOneContentActoin = function(videoMeta){
   console.log("Inside function taboneContent");
   return {
     type: "Set_Tab1_Content",
@@ -6,4 +6,4 @@ const tabOneContent = function(videoMeta){
   }
 }
 
-export default tabOneContent;
+export default tabOneContentActoin;

@@ -1,4 +1,6 @@
-export default function(state = 1, action){
+const navReducer = function(state = 1, action){
+  console.log("inside nav reducer");
+  console.log(""+action.type);
   switch(action.type){
     case "Switch_Nav_Tab":
       return action.payload;
@@ -8,3 +10,5 @@ export default function(state = 1, action){
     break;
   }
 }
+
+export default navReducer;

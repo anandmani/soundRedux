@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
+import tabOneContentAction from '../actions/tabOneContentAction.js';
+import {bindActionCreators} from 'redux';
 
 class Content extends Component{
 
+
   onContentFetch(response){
+    var that = this;
       console.log("Content fetched");
       console.log(response);
       console.log("Next page token: "+response.nextPageToken);
@@ -41,6 +44,7 @@ class Content extends Component{
         videoMeta.likeCount = response.items[0].statistics.likeCount;
         videoMeta.disklikeCounr = response.items[0].statistics.dislikeCount;
         console.log(videoMeta);
+        that.props.tabOneContentAction(videoMeta);
 
         //Update state
       });
@@ -57,7 +61,7 @@ class Content extends Component{
             q: "Dota+2",
             maxResults: 2
           })
-          request.execute(this.onContentFetch);
+          request.execute(this.onContentFetch.bind(this));
   }
 
   onGapiLoad(){ //on loading GAPI client library, we can start using gapi.client.
@@ -70,20 +74,27 @@ class Content extends Component{
     // console.log("xhr response"+xhr.response);
   }
 
+  componentWillMount(){
+    gapi.load("client",this.onGapiLoad.bind(this));
+  }
+
   render(){
     console.log("Inside Content - Render");
-    gapi.load("client",this.onGapiLoad.bind(this));
-    console.log("...");
+    console.log("navState"+this.props.navState);
     return(
       <div>
         Body{this.props.navState}
-        Making AJAX call
-        <div className ="card">
-          <img className="card-img-top" src="..." alt="Card image cap"></img>
-          <div className="card-block">
-            <h4 className="card-title">Card title</h4>
-          </div>
-        </div>
+        {this.props.videosState.map(function(item, index){
+          return (
+            <div className ="card">
+              <img className="card-img-top" src={item.thumbnailUrl} alt="Card image cap"></img>
+              <div className="card-block">
+                <h4 className="card-title">{item.videoTitle}</h4>
+              </div>
+            </div>
+          );
+        })}
+
     </div>
     );
   }
@@ -91,8 +102,13 @@ class Content extends Component{
 
 const mapStateToProps = function(state){
   return({
-    navState: state,
+    navState: state.navState,
+    videosState: state.tabOneContentState
   });
 }
 
-export default connect(mapStateToProps)(Content);
+const mapDispatchToProps = function(dispatch){
+  return bindActionCreators({tabOneContentAction: tabOneContentAction},dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content);

@@ -9,7 +9,7 @@ require('../../scss/style.scss');
 export default class App extends Component{
 
   render() {
-    console.log("Current state is:"+this.props.store);
+    // console.log("Current state is:"+this.props.store); //undefined as store is no more a prop. 
     return (
       <div>
         <NavBar/>

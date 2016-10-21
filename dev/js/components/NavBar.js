@@ -34,8 +34,9 @@ class NavBar extends Component{
 
 
 const mapStateToProps = function(state){
+  console.log("state"+state);
   return{
-      navState: state,
+      navState: state.navState,
   }
 }
 
