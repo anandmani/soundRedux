@@ -1,0 +1,16 @@
+card{
+  margin: 10px;
+}
+
+.card-img-wrap{
+  height: 118px;
+  width:240px;
+  overflow:hidden;
+  background-color: grey;
+}
+
+.card-img{
+  margin-top: -20px;
+  height: 160px;
+  width: 240px;
+}

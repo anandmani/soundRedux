@@ -42,7 +42,7 @@ class Content extends Component{
         // console.log("Video Dislikes: "+response.items[0].statistics.dislikeCount);
         videoMeta.videoViews = response.items[0].statistics.viewCount;
         videoMeta.likeCount = response.items[0].statistics.likeCount;
-        videoMeta.disklikeCounr = response.items[0].statistics.dislikeCount;
+        videoMeta.dislikeCount = response.items[0].statistics.dislikeCount;
         console.log(videoMeta);
         that.props.tabOneContentAction(videoMeta);
 
@@ -59,7 +59,7 @@ class Content extends Component{
             type: "video",
             order: "viewCount",
             q: "Dota+2",
-            maxResults: 2
+            maxResults: 25
           })
           request.execute(this.onContentFetch.bind(this));
   }
@@ -83,13 +83,20 @@ class Content extends Component{
     console.log("navState"+this.props.navState);
     return(
       <div>
-        Body{this.props.navState}
+        <div>
+          Body{this.props.navState}
+        </div>
         {this.props.videosState.map(function(item, index){
           return (
-            <div className ="card">
-              <img className="card-img-top" src={item.thumbnailUrl} alt="Card image cap"></img>
+            <div key={index} className ="card col-md-3">
+              <div className="card-img-wrap">
+                <img className="card-img" src={item.thumbnailUrl} alt="Card image cap"></img>
+              </div>
               <div className="card-block">
                 <h4 className="card-title">{item.videoTitle}</h4>
+                <h5 className="card-views">{item.videoViews}</h5>
+                <h5 className="card-likes">{item.likeCount}</h5>
+                <h5 className="card-dislikes">{item.dislikeCount}</h5>
               </div>
             </div>
           );
