@@ -50,7 +50,7 @@ class Content extends Component{
             part: "snippet",
             type: "video",
             order: "viewCount",
-            q: this.props.navTitlesState[this.props.navState],
+            q: this.props.navTitlesState[this.props.navState].title,
             maxResults: 2
           })
           request.execute(this.onContentFetch.bind(this));
@@ -73,7 +73,8 @@ class Content extends Component{
   render(){
     console.log("Inside Content - Render");
     console.log("navState"+this.props.navState);
-    gapi.load("client",this.onGapiLoad.bind(this));
+    if(this.props.navTitlesState[this.props.navState].status == "new")
+      gapi.load("client",this.onGapiLoad.bind(this));
 
     return(
       <div>
