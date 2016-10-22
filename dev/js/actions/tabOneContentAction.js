@@ -1,8 +1,10 @@
-const tabOneContentActoin = function(videoMeta){
+const tabOneContentActoin = function(videoMeta, navTab){
   console.log("Inside function taboneContent");
   return {
     type: "Set_Tab1_Content",
-    payload: videoMeta
+    payload: videoMeta,
+    tab: navTab
+
   }
 }
 

@@ -37,7 +37,7 @@ class Content extends Component{
         videoMeta.likeCount = response.items[0].statistics.likeCount;
         videoMeta.dislikeCount = response.items[0].statistics.dislikeCount;
         console.log(videoMeta);
-        that.props.tabOneContentAction(videoMeta);
+        that.props.tabOneContentAction(videoMeta, that.props.navState);
 
       });
 

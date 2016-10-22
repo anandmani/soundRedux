@@ -4,9 +4,12 @@ import {connect} from 'react-redux';
 class Board extends Component{
 
   render(){
+          console.log("board navstate"+this.props.navState);
+          console.log(this.props.videosState);
     return(
+
       <div>
-        {this.props.videosState.map(function(item, index){
+        {this.props.videosState[this.props.navState].map(function(item, index){
           return (
             <div key={index} className ="card col-md-3">
               <div className="card-img-wrap">
@@ -28,7 +31,10 @@ class Board extends Component{
 
 
 var mapStateToProps= function(state){
-    return({videosState:state.tabOneContentState});
+    return({
+              navState: state.navState,
+              videosState:state.tabOneContentState,
+            });
 }
 
 export default connect(mapStateToProps)(Board);
