@@ -14,6 +14,9 @@ export default class App extends Component{
     // console.log("Current state is:"+this.props.store); //undefined as store is no more a prop.
     return (
       <div>
+        <div id = "header">
+          YOUTUBE DASHBOARD
+        </div>
         <NavBar/>
         <Content/>
         <Board/>

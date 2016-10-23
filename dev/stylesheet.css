@@ -1,5 +1,30 @@
-card{
+html{
+      font-family: "Open Sans";
+        background-color: #f4f4f4;
+}
+#header{
+  background-color: #383838;
+  color: #f4f4f4;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+a:focus {
+    background-color: #f4f4f4 !important;
+}
+.board{
+  overflow: hidden;
+  margin-left: 8%;
+  margin-right: 8%;
+}
+.card{
   margin: 10px;
+  border: 1px solid #e3e3e3;
+  /*box-shadow: 2px 2px 5px grey;*/
+  background-color: white;
+  padding: 10px;
+  width: 260px;
 }
 
 .card-img-wrap{
@@ -13,4 +38,58 @@ card{
   margin-top: -20px;
   height: 160px;
   width: 240px;
+}
+.card-img-overlay{
+  background-color: black;
+  height: 118px;
+  width: 240px;
+  position: absolute;
+  top: 10px;
+  text-align: center;
+  line-height: 118px;
+  opacity: 1;
+}
+
+.playIcon{
+  position: absolute;
+  left: 110px;
+  top: 50px;
+  opacity: 0;
+}
+.card-title{
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #167ac6;
+  font-weight:bold;
+}
+
+.card-views{
+  font-size: 12px;
+}
+
+.card-likes-meter{
+  background-color: #167ac6;
+  height: 5px;
+  width: 10%;
+  float: left;
+
+}
+
+.card-dislikes-meter{
+  background-color: #e62117;
+  height: 5px;
+  width: 10%;
+  float: right;
+}
+
+.card-likes{
+  float: left;
+  font-size: 12px;
+
+}
+
+.card-dislikes{
+  float: right;
+  font-size: 12px;
 }
