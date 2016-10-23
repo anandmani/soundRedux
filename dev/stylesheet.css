@@ -2,13 +2,48 @@ html{
       font-family: "Open Sans";
         background-color: #f4f4f4;
 }
+.nav{
+  padding-left: 10%;
+}
 #header{
   background-color: #383838;
   color: #f4f4f4;
   height: 50px;
+
+}
+#headerTitle{
   line-height: 50px;
-  text-align: center;
-  font-weight: bold;
+}
+#headerTitle{
+  padding-left: 10%;
+  display: inline-block;
+  width: 50%;
+  float: left;
+}
+#searchArea{
+  display: inline-block;
+  width: 50%;
+  float: right;
+  padding-right: 10%
+}
+
+#searchInput{
+  float: right;
+  top:0;
+  right: 0;
+  margin: 10px;
+
+  height: 30px;
+  width: 300px;
+  line-height: 25px;
+  overflow: hidden;
+  word-wrap: none;
+  background-color: #222222;
+  outline: none;
+  resize: none;
+  border: none;
+  border-radius: 4px;
+
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
   background-color: #f4f4f4;
@@ -26,6 +61,7 @@ html{
   background-color: white;
   padding: 10px;
   width: 260px;
+  cursor: pointer;
 }
 
 .card-img-wrap{
@@ -61,7 +97,8 @@ html{
   height: 40px;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #167ac6;
+  /*color: #167ac6;*/
+  color: #383838;
   font-weight:bold;
 }
 

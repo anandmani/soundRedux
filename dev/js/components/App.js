@@ -15,7 +15,13 @@ export default class App extends Component{
     return (
       <div>
         <div id = "header">
-          YOUTUBE DASHBOARD
+          <div id="headerTitle">
+            TubeRedux
+          </div>
+          <div id="searchArea">
+          🔍
+            <textArea wrap="off" id="searchInput"/>
+          </div>
         </div>
         <NavBar/>
         <Content/>
