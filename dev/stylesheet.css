@@ -10,9 +10,10 @@ html{
   text-align: center;
   font-weight: bold;
 }
-a:focus {
-    background-color: #f4f4f4 !important;
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+  background-color: #f4f4f4;
 }
+
 .board{
   overflow: hidden;
   margin-left: 8%;

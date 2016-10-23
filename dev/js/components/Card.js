@@ -11,7 +11,6 @@ class Card extends Component{
   hideImageOverlay(){
     this.refs.cardImgOverlay.style.opacity=0;
     this.refs.playIcon.style.opacity=0;
-    console.log("mouse over");
   }
 
   render(){
