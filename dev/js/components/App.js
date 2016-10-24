@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-import Dummy from './Dummy.js';
 import Header from './Header.js';
 import NavBar from './NavBar.js';
 import Content from './Content.js';

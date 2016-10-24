@@ -137,3 +137,21 @@ html{
   float: right;
   font-size: 12px;
 }
+
+.modal-header{
+  background-color: black;
+  text-align: center;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+.modal-content{
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  vertical-align: middle;
+  top:200px;
+}
+.modal-body{
+  padding: 0;
+}

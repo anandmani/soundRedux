@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import { Modal } from 'react-bootstrap';
+import VideoPlayer from './VideoPlayer.js';
 const playIcon = require('../../resources/playIcon.png');
 
+
 class Card extends Component{
+  constructor(){
+    super();
+    this.state = {showModal: false}
+    this.close = this.close.bind(this);
+    this.open = this.open.bind(this);
+  }
   showImageOverlay(){
     this.refs.cardImgOverlay.style.opacity=0.8;
     this.refs.playIcon.style.opacity=1;
@@ -13,12 +22,21 @@ class Card extends Component{
     this.refs.playIcon.style.opacity=0;
   }
 
+  close() {
+    this.setState({ showModal: false });
+  }
+
+  open() {
+    this.setState({ showModal: true });
+  }
+
   render(){
   var likePercent = Math.floor(this.props.videoObj.likeCount/(+this.props.videoObj.likeCount+ +this.props.videoObj.dislikeCount)*100)+"%";
   var dislikePercent = Math.floor(this.props.videoObj.dislikeCount/(+this.props.videoObj.likeCount+ +this.props.videoObj.dislikeCount)*100)+"%"; //adding +1 because we are taking floor in both cases. sending rounded 1 to dislike
 
   return (
-    <div className ="card col-xs-4" onMouseEnter={this.showImageOverlay.bind(this)} onMouseLeave={this.hideImageOverlay.bind(this)}>
+    <div className ="card col-xs-4" onMouseEnter={this.showImageOverlay.bind(this)} onMouseLeave={this.hideImageOverlay.bind(this)} onClick={this.open}>
+
       <div className="card-img-wrap">
         <img className="card-img" src={this.props.videoObj.thumbnailUrl} alt="Card image cap"></img>
         <div ref="cardImgOverlay" className ="card-img-overlay" ></div>
@@ -32,6 +50,16 @@ class Card extends Component{
         <h5 className="card-likes">👍{(+this.props.videoObj.likeCount).toLocaleString()}</h5>
         <h5 className="card-dislikes">👎{(+this.props.videoObj.dislikeCount).toLocaleString()}</h5>
       </div>
+
+      <Modal show={this.state.showModal} onHide={this.close}>
+        <Modal.Header closeButton>
+          <Modal.Title>{this.props.videoObj.videoTitle}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body id="videoPlayer" >
+          <VideoPlayer videoId = {this.props.videoObj.videoId}/>
+        </Modal.Body>
+      </Modal>
+
     </div>
   );
 }
