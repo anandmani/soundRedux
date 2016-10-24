@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import Dummy from './Dummy.js';
 import Header from './Header.js';
 import NavBar from './NavBar.js';
 import Content from './Content.js';
@@ -15,6 +16,7 @@ export default class App extends Component{
     // console.log("Current state is:"+this.props.store); //undefined as store is no more a prop.
     return (
       <div>
+      <div id="player"></div>
         <Header/>
         <NavBar/>
         <Content/>
