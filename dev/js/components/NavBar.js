@@ -14,7 +14,10 @@ class NavBar extends Component{
   generateNavTabs(item, index){
       if(index == 0)
         return;
-      return(
+      if(item.title=="Search")
+        return <NavItem key={index} eventKey={index} disabled>{item.title.split("+").join(" ")}</NavItem>
+      else
+        return(
         <NavItem key={index} eventKey={index}>{item.title.split("+").join(" ")}</NavItem>
       )//using .split + .join _ because .replace +  replaces only first occurance of + with _
   }

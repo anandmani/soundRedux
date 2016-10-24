@@ -51,7 +51,7 @@ class Content extends Component{
             type: "video",
             order: "viewCount",
             q: this.props.navTitlesState[this.props.navState].title,
-            maxResults: 15
+            maxResults: 20
           })
           request.execute(this.onContentFetch.bind(this));
   }

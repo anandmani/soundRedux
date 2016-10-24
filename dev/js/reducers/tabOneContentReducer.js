@@ -1,4 +1,4 @@
-export default function(state=[[],[],[],[],[],[],[]], action){
+export default function(state=[[],[],[],[],[],[],[],[]], action){
   console.log("Inside tab 1 reducer");
   console.log(typeof(action.tab));
   switch(action.type){

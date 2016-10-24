@@ -1,4 +1,4 @@
-const navTitlesReducer = (state=[{title:"",status:"new"},{title:"Dota+2",status:"new"},{title:"MrSuicideSheep",status:"new"},{title:"Crazy+Russian+Hacker",status:"new"},{title:"Documentaries",status:"new"},{title:"Naruto+Songs",status:"new"},{title:"Kenny+Sebastian",status:"new"}], action) => {
+const navTitlesReducer = (state=[{title:"",status:"new"},{title:"MrSuicideSheep",status:"new"},{title:"Dota+2",status:"new"},{title:"Crazy+Russian+Hacker",status:"new"},{title:"Documentaries",status:"new"},{title:"Naruto+Songs",status:"new"},{title:"Kenny+Sebastian",status:"new"},{title:"Search",status:"new"}], action) => {
   console.log("Inside navTitles reducer");
   switch(action.type){
     case "Set_Tab1_Content":

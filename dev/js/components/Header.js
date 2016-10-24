@@ -1,6 +1,21 @@
 import React, {Component} from 'react';
-
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import navSelectAction from '../actions/navSelectAction.js';
 class Header extends Component{
+
+  checkEnter(event){
+  //Make validation that card name is not empty
+    var input = this.refs.searchInput.value.trim()
+    if(input == "");
+    else if(event.keyCode == 13){ //If value is not empty, enter triggers save button
+        event.preventDefault();
+        console.log("Searching for "+input);
+        this.props.navSelectAction(7);
+
+    }
+  }
+
   render(){
     return(
         <div id = "header">
@@ -9,11 +24,15 @@ class Header extends Component{
           </div>
           <div id="searchArea">
             <div id="searchIcon">🔍</div>
-            <textArea wrap="off" id="searchInput" placeholder="Search"/>
+            <textArea wrap="off" id="searchInput" ref="searchInput" placeholder="Search" onKeyDown={this.checkEnter.bind(this)}/>
           </div>
         </div>
     );
   }
 }
 
-export default Header;
+const mapDispatchToProps = function(dispatch){
+  return bindActionCreators({navSelectAction: navSelectAction},dispatch);
+}
+
+export default connect(null,mapDispatchToProps)(Header);
