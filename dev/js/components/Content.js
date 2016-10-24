@@ -45,12 +45,15 @@ class Content extends Component{
 
   }
   onYouTubeApiLoad(){//on loading GAPI client library for YouTube
+          var searchTitle = this.props.navTitlesState[this.props.navState].title;
+          if(searchTitle == "Search")
+            searchTitle = this.props.navTitlesState[this.props.navState].searchTitle;
           gapi.client.setApiKey("AIzaSyCSrcWsGzFXcm74Huk43YTAoWwYMpRXfYI");
           var request = gapi.client.youtube.search.list({
             part: "snippet",
             type: "video",
             order: "viewCount",
-            q: this.props.navTitlesState[this.props.navState].title,
+            q: searchTitle,
             maxResults: 20
           })
           request.execute(this.onContentFetch.bind(this));

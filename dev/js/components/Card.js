@@ -15,7 +15,7 @@ class Card extends Component{
 
   render(){
   var likePercent = Math.floor(this.props.videoObj.likeCount/(+this.props.videoObj.likeCount+ +this.props.videoObj.dislikeCount)*100)+"%";
-  var dislikePercent = Math.floor(this.props.videoObj.dislikeCount/(+this.props.videoObj.likeCount+ +this.props.videoObj.dislikeCount)*100)+1+"%"; //adding +1 because we are taking floor in both cases. sending rounded 1 to dislike
+  var dislikePercent = Math.floor(this.props.videoObj.dislikeCount/(+this.props.videoObj.likeCount+ +this.props.videoObj.dislikeCount)*100)+"%"; //adding +1 because we are taking floor in both cases. sending rounded 1 to dislike
 
   return (
     <div className ="card col-xs-4" onMouseEnter={this.showImageOverlay.bind(this)} onMouseLeave={this.hideImageOverlay.bind(this)}>

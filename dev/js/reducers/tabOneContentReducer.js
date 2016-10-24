@@ -20,6 +20,11 @@ export default function(state=[[],[],[],[],[],[],[],[]], action){
       return preArray.concat(state.slice(action.tab+1));
     break;
 
+    case "Set_Search_Title":
+      //deleting videos of previous searchTitle
+      return (state.slice(0,state.length-1)).concat([[]]);
+    break;
+
     default:
     console.log("default, returns: ");
     console.log(state);
