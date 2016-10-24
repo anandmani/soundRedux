@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import Header from './Header.js';
 import NavBar from './NavBar.js';
 import Content from './Content.js';
 import Board from './Board.js';
@@ -14,15 +15,7 @@ export default class App extends Component{
     // console.log("Current state is:"+this.props.store); //undefined as store is no more a prop.
     return (
       <div>
-        <div id = "header">
-          <div id="headerTitle">
-            TubeRedux
-          </div>
-          <div id="searchArea">
-          🔍
-            <textArea wrap="off" id="searchInput"/>
-          </div>
-        </div>
+        <Header/>
         <NavBar/>
         <Content/>
         <Board/>

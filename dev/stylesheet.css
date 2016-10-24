@@ -9,30 +9,35 @@ html{
   background-color: #383838;
   color: #f4f4f4;
   height: 50px;
+  overflow: hidden;
 
 }
 #headerTitle{
   line-height: 50px;
 }
 #headerTitle{
-  padding-left: 10%;
+  margin-left: 10%;
   display: inline-block;
-  width: 50%;
+  width: 100px;
   float: left;
 }
 #searchArea{
   display: inline-block;
-  width: 50%;
+  position: relative;
+  height: 50px;
+  width: 300px;
   float: right;
-  padding-right: 10%
+  margin-right: 100px;
 }
-
+#searchIcon{
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  left: 20px;
+}
 #searchInput{
-  float: right;
-  top:0;
-  right: 0;
+  display: inline-block;
   margin: 10px;
-
   height: 30px;
   width: 300px;
   line-height: 25px;
@@ -43,6 +48,7 @@ html{
   resize: none;
   border: none;
   border-radius: 4px;
+  padding-left: 35px;
 
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
