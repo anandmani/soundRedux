@@ -19,6 +19,11 @@ class Board extends Component{
 
       <div className="board col-xs-10">
         {this.props.videosState[this.props.navState].map(this.generateCard.bind(this))}
+        <div className="spinner">
+          <div className ="spinnerInnerRing">
+            <div className ="spinnerInnerCircle"/>
+          </div>
+        </div>
       </div>
     );
   }
