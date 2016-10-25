@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import navReducer from './navReducer.js';
 import tabOneContentReducer from './tabOneContentReducer.js';
 import navTitlesReducer from './navTitlesReducer.js';
+import fetchingReducer from './fetchingReducer.js';
 
 // export default function(){
 //   return combineReducers({
@@ -15,7 +16,8 @@ import navTitlesReducer from './navTitlesReducer.js';
 const allReducers = combineReducers({
   navState: navReducer,
   tabOneContentState: tabOneContentReducer,
-  navTitlesState: navTitlesReducer
+  navTitlesState: navTitlesReducer,
+  fetchingState: fetchingReducer
 });
 
 export default allReducers;

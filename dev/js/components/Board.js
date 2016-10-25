@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import Card from './Card.js';
-
+import Spinner from './Spinner.js';
 
 class Board extends Component{
 
@@ -19,11 +19,7 @@ class Board extends Component{
 
       <div className="board col-xs-10">
         {this.props.videosState[this.props.navState].map(this.generateCard.bind(this))}
-        <div className="spinner">
-          <div className ="spinnerInnerRing">
-            <div className ="spinnerInnerCircle"/>
-          </div>
-        </div>
+        <Spinner/>
       </div>
     );
   }

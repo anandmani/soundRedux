@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import tabOneContentAction from '../actions/tabOneContentAction.js';
+import fetchingAction from '../actions/fetchingAction.js';
 import {bindActionCreators} from 'redux';
 import Board from './Board.js';
 
@@ -8,7 +9,10 @@ class Content extends Component{
 
 
   onContentFetch(response){
-    var that = this;
+
+      this.props.fetchingAction("idle");
+
+      var that = this;
       console.log("Content fetched");
       console.log(response);
       console.log("Next page token: "+response.nextPageToken);
@@ -45,6 +49,7 @@ class Content extends Component{
 
   }
   onYouTubeApiLoad(){//on loading GAPI client library for YouTube
+          this.props.fetchingAction("fetching");
           var searchTitle = this.props.navTitlesState[this.props.navState].title;
           if(searchTitle == "Search")
             searchTitle = this.props.navTitlesState[this.props.navState].searchTitle;
@@ -89,12 +94,12 @@ class Content extends Component{
 const mapStateToProps = function(state){
   return({  //Subscribing the component only to the (sub)states mentioned in this object. not all (sub)states in the state-tree. When these states, change, the component re-renders.
     navState: state.navState,
-    navTitlesState: state.navTitlesState
+    navTitlesState: state.navTitlesState,
   });
 }
 
 const mapDispatchToProps = function(dispatch){
-  return bindActionCreators({tabOneContentAction: tabOneContentAction},dispatch);
+  return bindActionCreators({tabOneContentAction: tabOneContentAction, fetchingAction: fetchingAction},dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);
