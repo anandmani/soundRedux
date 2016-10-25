@@ -11,7 +11,11 @@ require('../../stylesheet.css');
 export default class App extends Component{
 
   scrollFunc(){
-      console.log(this.refs.app.scrollTop);
+      // console.log(this.refs.app.scrollTop);
+      // console.log(this.refs.app.offsetHeight);
+      // console.log(this.refs.app.scrollHeight);
+      if(this.refs.app.scrollTop+this.refs.app.offsetHeight>=this.refs.app.scrollHeight)
+        console.log("Scrolled to bottom of the page!");
   }
 
   render() {
