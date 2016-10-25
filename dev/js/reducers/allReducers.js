@@ -3,7 +3,7 @@ import navReducer from './navReducer.js';
 import tabOneContentReducer from './tabOneContentReducer.js';
 import navTitlesReducer from './navTitlesReducer.js';
 import fetchingReducer from './fetchingReducer.js';
-
+import nextPageTokenReducer from './nextPageTokenReducer';
 // export default function(){
 //   return combineReducers({
 //     navState: navReducer,
@@ -17,7 +17,8 @@ const allReducers = combineReducers({
   navState: navReducer,
   tabOneContentState: tabOneContentReducer,
   navTitlesState: navTitlesReducer,
-  fetchingState: fetchingReducer
+  fetchingState: fetchingReducer,
+  nextPageState: nextPageTokenReducer
 });
 
 export default allReducers;

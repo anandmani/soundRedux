@@ -13,6 +13,7 @@ const navTitlesReducer = (state=[{title:"",status:"new"},{title:"MrSuicideSheep"
       tab[0].status ="new"; //To make way for new search
       return state.slice(0,state.length-1).concat(tab);
     break;
+
     default:
       return state;
     break;

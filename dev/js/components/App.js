@@ -16,6 +16,8 @@ export default class App extends Component{
       // console.log(this.refs.app.scrollHeight);
       if(this.refs.app.scrollTop+this.refs.app.offsetHeight>=this.refs.app.scrollHeight)
         console.log("Scrolled to bottom of the page!");
+
+      
   }
 
   render() {

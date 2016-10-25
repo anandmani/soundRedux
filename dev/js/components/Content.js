@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import tabOneContentAction from '../actions/tabOneContentAction.js';
+import setNextPageTokenAction from '../actions/setNextPageTokenAction.js';
 import fetchingAction from '../actions/fetchingAction.js';
 import {bindActionCreators} from 'redux';
 import Board from './Board.js';
@@ -16,6 +17,8 @@ class Content extends Component{
       console.log("Content fetched");
       console.log(response);
       console.log("Next page token: "+response.nextPageToken);
+
+      this.props.setNextPageTokenAction(this.props.navState,response.nextPageToken);
 
       response.items.map(function(item, index){
 
@@ -99,7 +102,7 @@ const mapStateToProps = function(state){
 }
 
 const mapDispatchToProps = function(dispatch){
-  return bindActionCreators({tabOneContentAction: tabOneContentAction, fetchingAction: fetchingAction},dispatch);
+  return bindActionCreators({tabOneContentAction: tabOneContentAction, fetchingAction: fetchingAction, setNextPageTokenAction: setNextPageTokenAction},dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);
