@@ -98,7 +98,7 @@ const mapStateToProps = function(state){
   return({  //Subscribing the component only to the (sub)states mentioned in this object. not all (sub)states in the state-tree. When these states, change, the component re-renders.
     navState: state.navState,
     navTitlesState: state.navTitlesState,
-
+    nextPageState: state.nextPageState
   });
 }
 
