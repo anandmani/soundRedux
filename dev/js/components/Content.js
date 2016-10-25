@@ -11,7 +11,7 @@ class Content extends Component{
 
   onContentFetch(response){
 
-      this.props.fetchingAction("idle");
+      this.props.fetchingAction("fetched",this.props.navState);
 
       var that = this;
       console.log("Content fetched");
@@ -52,7 +52,7 @@ class Content extends Component{
 
   }
   onYouTubeApiLoad(){//on loading GAPI client library for YouTube
-          this.props.fetchingAction("fetching");
+          this.props.fetchingAction("fetching",this.props.navState);
           var searchTitle = this.props.navTitlesState[this.props.navState].title;
           if(searchTitle == "Search")
             searchTitle = this.props.navTitlesState[this.props.navState].searchTitle;
@@ -98,6 +98,7 @@ const mapStateToProps = function(state){
   return({  //Subscribing the component only to the (sub)states mentioned in this object. not all (sub)states in the state-tree. When these states, change, the component re-renders.
     navState: state.navState,
     navTitlesState: state.navTitlesState,
+
   });
 }
 

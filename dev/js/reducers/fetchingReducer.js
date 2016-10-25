@@ -1,8 +1,8 @@
-const fetchingReducer = function(state ="idle",action){
+const fetchingReducer = function(state ="fetched",action){
   console.log("Inside fetching reducer");
   switch (action.type) {
     case "Fetch_API_Status":
-        return  action.payload;
+        return  action.status;
       break;
     default:
       return state;

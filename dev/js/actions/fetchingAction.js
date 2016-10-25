@@ -1,8 +1,9 @@
-const fetchingAction = function(status){
-  console.log("Inside fetching action, status: "+ status);
+const fetchingAction = function(status, tab){
+  console.log("Inside fetching action, tab: "+ tab+" status: "+status);
   return{
     type: "Fetch_API_Status",
-    payload: status
+    status: status,
+    tab: tab
   }
 }
 
