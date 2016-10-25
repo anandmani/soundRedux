@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import Card from './Card.js';
 import Spinner from './Spinner.js';
+import {bindActionCreators} from 'redux';
+import fetchingAction from '../actions/fetchingAction.js';
 
 class Board extends Component{
 
@@ -15,10 +17,10 @@ class Board extends Component{
       // console.log(this.refs.board.scrollTop);
       // console.log(this.refs.board.offsetHeight);
       // console.log(this.refs.board.scrollHeight);
-      if(this.refs.board.scrollTop+this.refs.board.offsetHeight>=this.refs.board.scrollHeight)
+      if(this.refs.board.scrollTop+this.refs.board.offsetHeight==this.refs.board.scrollHeight){
         console.log("Scrolled to bottom of the page!");
-
-
+        this.props.fetchingAction("next page",this.props.navState);
+      }
   }
 
   render(){
@@ -36,11 +38,15 @@ class Board extends Component{
 }
 
 
-var mapStateToProps= function(state){
+const mapStateToProps= function(state){
     return({
               navState: state.navState,
               videosState:state.tabOneContentState,
             });
 }
 
-export default connect(mapStateToProps)(Board);
+const mapDispatchToProps = function(dispatch){
+    return bindActionCreators({fetchingAction: fetchingAction},dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

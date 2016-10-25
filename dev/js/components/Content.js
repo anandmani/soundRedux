@@ -52,6 +52,8 @@ class Content extends Component{
 
   }
   onYouTubeApiLoad(){//on loading GAPI client library for YouTube
+
+    if(this.props.navTitlesState[this.props.navState].status == "new"){
           this.props.fetchingAction("fetching",this.props.navState);
           var searchTitle = this.props.navTitlesState[this.props.navState].title;
           if(searchTitle == "Search")
@@ -65,6 +67,28 @@ class Content extends Component{
             maxResults: 20
           })
           request.execute(this.onContentFetch.bind(this));
+      }
+      else if(this.props.navTitlesState[this.props.navState].status == "next page" && this.props.nextPageState[this.props.navState].trim()!=""){  //mentioning this.props.nextPageState[this.props.navState].trim()!="" because of scroll bar bug in browser
+        console.log("nextpagetoken ");
+        console.log(this.props.nextPageState[this.props.navState]);
+        this.props.fetchingAction("fetching",this.props.navState);
+        var searchTitle = this.props.navTitlesState[this.props.navState].title;
+        if(searchTitle == "Search")
+          searchTitle = this.props.navTitlesState[this.props.navState].searchTitle;
+        gapi.client.setApiKey("AIzaSyCSrcWsGzFXcm74Huk43YTAoWwYMpRXfYI");
+        var request = gapi.client.youtube.search.list({
+          part: "snippet",
+          type: "video",
+          order: "viewCount",
+          q: searchTitle,
+          maxResults: 20,
+          pageToken: this.props.nextPageState[this.props.navState]
+        })
+        request.execute(this.onContentFetch.bind(this));
+      }
+      else
+          this.props.fetchingAction("fetched",this.props.navState);   //this case happens when this.props.navTitlesState[this.props.navState].status == "next page" && this.props.nextPageState[this.props.navState].trim()=="" because of scroll bar bug. Making fetching action fetched to stop spinner.
+
   }
 
   onGapiLoad(){ //on loading GAPI client library, we can start using gapi.client.
@@ -83,8 +107,7 @@ class Content extends Component{
 
   render(){
     console.log("Inside Content - Render");
-    console.log("navState"+this.props.navState);
-    if(this.props.navTitlesState[this.props.navState].status == "new")
+    if(this.props.navTitlesState[this.props.navState].status == "new" || this.props.navTitlesState[this.props.navState].status == "next page")
       gapi.load("client",this.onGapiLoad.bind(this));
 
     return(

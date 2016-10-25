@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 class Spinner extends Component{
   render(){
-    if(this.props.fetchingState == "fetching"){
+    if(this.props.fetchingState == "fetching" || this.props.fetchingState == "next page"){
       return(
         <div className="spinner">
           <div className ="spinnerInnerRing">
