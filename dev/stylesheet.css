@@ -5,8 +5,7 @@ html{
         height: 100%;
 }
 #app{
-  overflow-y: scroll;
-  height: 950px;
+
 }
 .nav{
   padding-left: 10%;
@@ -64,6 +63,8 @@ html{
 .board{
   margin-left: 8%;
   margin-right: 8%;
+    height: 850px;
+    overflow-y: scroll;
 }
 .card{
   margin: 10px;
