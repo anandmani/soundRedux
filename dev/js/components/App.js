@@ -10,10 +10,14 @@ require('../../stylesheet.css');
 
 export default class App extends Component{
 
+  scrollFunc(){
+      console.log(this.refs.app.scrollTop);
+  }
+
   render() {
     // console.log("Current state is:"+this.props.store); //undefined as store is no more a prop.
     return (
-      <div>
+      <div id="app" ref="app" onScroll={this.scrollFunc.bind(this)}>
       <div id="player"></div>
         <Header/>
         <NavBar/>
