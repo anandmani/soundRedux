@@ -41,7 +41,7 @@ class Board extends Component{
 const mapStateToProps= function(state){
     return({
               navState: state.navState,
-              videosState:state.tabOneContentState,
+              videosState:state.tabContentState,
             });
 }
 

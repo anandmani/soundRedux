@@ -1,13 +1,13 @@
 import {combineReducers} from 'redux';
 import navReducer from './navReducer.js';
-import tabOneContentReducer from './tabOneContentReducer.js';
+import tabContentReducer from './tabContentReducer.js';
 import navTitlesReducer from './navTitlesReducer.js';
 import fetchingReducer from './fetchingReducer.js';
 import nextPageTokenReducer from './nextPageTokenReducer';
 // export default function(){
 //   return combineReducers({
 //     navState: navReducer,
-//     tabOneContentState: tabOneContentReducer
+//     tabContentState: tabContentReducer
 //   });
 // }
 
@@ -15,7 +15,7 @@ import nextPageTokenReducer from './nextPageTokenReducer';
 
 const allReducers = combineReducers({
   navState: navReducer,
-  tabOneContentState: tabOneContentReducer,
+  tabContentState: tabContentReducer,
   navTitlesState: navTitlesReducer,
   fetchingState: fetchingReducer,
   nextPageState: nextPageTokenReducer

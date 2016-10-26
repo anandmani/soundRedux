@@ -1,8 +1,8 @@
 export default function(state=[[],[],[],[],[],[],[],[]], action){
-  console.log("Inside tab 1 reducer");
+  console.log("Inside tab reducer");
   console.log(typeof(action.tab));
   switch(action.type){
-    case "Set_Tab1_Content":
+    case "Set_Tab_Content":
       // return [...state,action.payload];
       var tabArray = state.slice(action.tab,action.tab+1);  //retrieving correct tab to push video in
       tabArray = tabArray[0];

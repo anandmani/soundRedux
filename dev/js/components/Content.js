@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import tabOneContentAction from '../actions/tabOneContentAction.js';
+import tabContentAction from '../actions/tabContentAction.js';
 import setNextPageTokenAction from '../actions/setNextPageTokenAction.js';
 import fetchingAction from '../actions/fetchingAction.js';
 import {bindActionCreators} from 'redux';
@@ -44,7 +44,7 @@ class Content extends Component{
         videoMeta.likeCount = response.items[0].statistics.likeCount;
         videoMeta.dislikeCount = response.items[0].statistics.dislikeCount;
         console.log(videoMeta);
-        that.props.tabOneContentAction(videoMeta, that.props.navState);
+        that.props.tabContentAction(videoMeta, that.props.navState);
 
       });
 
@@ -126,7 +126,7 @@ const mapStateToProps = function(state){
 }
 
 const mapDispatchToProps = function(dispatch){
-  return bindActionCreators({tabOneContentAction: tabOneContentAction, fetchingAction: fetchingAction, setNextPageTokenAction: setNextPageTokenAction},dispatch);
+  return bindActionCreators({tabContentAction: tabContentAction, fetchingAction: fetchingAction, setNextPageTokenAction: setNextPageTokenAction},dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);
