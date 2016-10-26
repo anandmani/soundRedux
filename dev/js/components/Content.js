@@ -23,7 +23,7 @@ class Content extends Component{
       response.items.map(function(item, index){
 
       var videoMeta = {
-        videoIndex: index+1, //Need to input logic for next page
+        videoIndex: that.props.nextPageState[that.props.navState]+(index+1), //Need to input logic for next page
         videoTitle: item.snippet.title,
         videoId: item.id.videoId,
         videoDesc: item.snippet.description,

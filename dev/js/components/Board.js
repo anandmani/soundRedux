@@ -26,11 +26,26 @@ class Board extends Component{
   render(){
           console.log("board navstate"+this.props.navState);
           console.log(this.props.videosState);
+
+          const videos = [...this.props.videosState[this.props.navState]];
+          const compare = function(a,b){
+            if(a.videoIndex.substring(0,6)<b.videoIndex.substring(0,6))
+              return -1;
+            else if(a.videoIndex.substring(0,6)==b.videoIndex.substring(0,6)){
+              return (+a.videoIndex.substring(6,a.videoIndex.length) - +b.videoIndex.substring(6,b.videoIndex.length));
+            }
+            else
+              return 1;
+          }
+
+          videos.sort(compare);
+          console.log("sorted");
+          console.log(videos);
           //  <div className="card-likes-meter" style={width:{Math.floor(item.likeCount/(+item.likeCount+ +item.dislikeCount)*100)}}></div>
     return(
 
       <div className="board col-xs-10" ref ="board" onScroll={this.scrollFunc.bind(this)}>
-        {this.props.videosState[this.props.navState].map(this.generateCard.bind(this))}
+        {videos.map(this.generateCard.bind(this))}
         <Spinner/>
       </div>
     );
