@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import navSelectAction from '../actions/navSelectAction.js';
 import setSearchTitle from '../actions/setSearchTitle';
+import Logo from './Logo.js';
+
 class Header extends Component{
 
   checkEnter(event){
@@ -23,6 +25,7 @@ class Header extends Component{
         <div id = "header">
           <div id="headerTitle">
             TubeRedux
+            <Logo/>
           </div>
           <div id="searchArea">
             <div id="searchIcon">🔍</div>
