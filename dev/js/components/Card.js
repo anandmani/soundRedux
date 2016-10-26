@@ -49,6 +49,7 @@ class Card extends Component{
         <OverlayTrigger placement="right" overlay={tooltip}>
           <div className="card-title">{this.props.videoObj.videoTitle}</div>
         </OverlayTrigger>
+        <h5 className="card-channel-title">{this.props.videoObj.channelTitle}</h5>
         <h5 className="card-views">{(+this.props.videoObj.videoViews).toLocaleString()} views</h5>
         <div className="card-likes-meter" style={{"width":likePercent}}></div>
         <div className="card-dislikes-meter" style={{"width":dislikePercent}}></div>
