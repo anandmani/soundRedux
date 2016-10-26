@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Modal } from 'react-bootstrap';
 import VideoPlayer from './VideoPlayer.js';
+import {Tooltip, OverlayTrigger} from 'react-bootstrap';
 const playIcon = require('../../resources/playIcon.png');
 
 
@@ -33,7 +34,9 @@ class Card extends Component{
   render(){
   var likePercent = Math.floor(this.props.videoObj.likeCount/(+this.props.videoObj.likeCount+ +this.props.videoObj.dislikeCount)*100)+"%";
   var dislikePercent = Math.floor(this.props.videoObj.dislikeCount/(+this.props.videoObj.likeCount+ +this.props.videoObj.dislikeCount)*100)+"%"; //adding +1 because we are taking floor in both cases. sending rounded 1 to dislike
-
+  const tooltip = (
+      <Tooltip id="tooltip">{this.props.videoObj.videoTitle}</Tooltip>
+  );
   return (
     <div className ="card col-xs-4" onMouseEnter={this.showImageOverlay.bind(this)} onMouseLeave={this.hideImageOverlay.bind(this)} onClick={this.open}>
 
@@ -43,7 +46,9 @@ class Card extends Component{
         <img ref="playIcon" className="playIcon" src={playIcon} ></img>
       </div>
       <div className="card-block">
-        <div className="card-title">{this.props.videoObj.videoTitle}</div>
+        <OverlayTrigger placement="right" overlay={tooltip}>
+          <div className="card-title">{this.props.videoObj.videoTitle}</div>
+        </OverlayTrigger>
         <h5 className="card-views">{(+this.props.videoObj.videoViews).toLocaleString()} views</h5>
         <div className="card-likes-meter" style={{"width":likePercent}}></div>
         <div className="card-dislikes-meter" style={{"width":dislikePercent}}></div>
