@@ -4,6 +4,7 @@ import tabContentReducer from './tabContentReducer.js';
 import navTitlesReducer from './navTitlesReducer.js';
 import fetchingReducer from './fetchingReducer.js';
 import nextPageTokenReducer from './nextPageTokenReducer';
+import filterReducer from './filterReducer.js';
 // export default function(){
 //   return combineReducers({
 //     navState: navReducer,
@@ -18,7 +19,8 @@ const allReducers = combineReducers({
   tabContentState: tabContentReducer,
   navTitlesState: navTitlesReducer,
   fetchingState: fetchingReducer,
-  nextPageState: nextPageTokenReducer
+  nextPageState: nextPageTokenReducer,
+  filterState: filterReducer
 });
 
 export default allReducers;
