@@ -16,10 +16,13 @@ body{
    width:70%;
    display: inline-block;
 }
+#orderBy{
+  font-style: italic;
+}
 #filterBar{
   background-color: white;
   padding-right: 10%;
-  padding-left: 10%;
+
   width:30%;
   display: inline-block;
 }
@@ -103,7 +106,7 @@ body{
   height: 50px;
   width: 300px;
   float: right;
-  margin-right: 100px;
+  margin-right: 10%;
 }
 #searchIcon{
   position: absolute;

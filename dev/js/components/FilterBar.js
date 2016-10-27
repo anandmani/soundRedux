@@ -15,6 +15,7 @@ class FilterBar extends Component{
   render(){
     return(
       <Nav id="filterBar" bsStyle="tabs" activeKey={1} onSelect={this.handleSelect}>
+          <NavItem key={0} eventKey={0} disabled> <div id="orderBy">Order By :</div> </NavItem>
           <NavItem key={1} eventKey={1}>Views</NavItem>
           <NavItem key={2} eventKey={2}>Likes</NavItem>
       </Nav>
