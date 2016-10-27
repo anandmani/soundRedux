@@ -4,11 +4,24 @@ html{
         overflow: hidden;
         height: 100%;
 }
-#app{
-
+body{
+  background-color: #f4f4f4;
 }
-.nav{
+#app{
+  background-color: transparent;
+}
+#navBar{
+  background-color: white;
   padding-left: 10%;
+   width:70%;
+   display: inline-block;
+}
+#filterBar{
+  background-color: white;
+  padding-right: 10%;
+  padding-left: 10%;
+  width:30%;
+  display: inline-block;
 }
 #logo{
   position: relative;

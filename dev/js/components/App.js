@@ -4,6 +4,7 @@ import Header from './Header.js';
 import NavBar from './NavBar.js';
 import Content from './Content.js';
 import Board from './Board.js';
+import FilterBar from './FilterBar.js';
 
 import 'bootstrap/dist/css/bootstrap.css';  //instead of giving path to this in html, just import it. import is provided by node js and directly looks in node modules!
 require('../../stylesheet.css');
@@ -17,6 +18,7 @@ export default class App extends Component{
       <div id="player"></div>
         <Header/>
         <NavBar/>
+        <FilterBar/>
         <Content/>
         <Board/>
       </div>

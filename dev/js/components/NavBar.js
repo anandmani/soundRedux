@@ -26,7 +26,7 @@ class NavBar extends Component{
     console.log("Inside NavBar - Render");
     console.log("Active key is "+this.props.navState);
     return( //activeKey should be a string so, type coercing it?? whyy? im making it int
-      <Nav bsStyle="tabs" activeKey={this.props.navState} onSelect={this.handleSelect.bind(this)}>
+      <Nav id="navBar" bsStyle="tabs" activeKey={this.props.navState} onSelect={this.handleSelect.bind(this)}>
         {this.props.navTitlesState.map(this.generateNavTabs)}
       </Nav>
     );
