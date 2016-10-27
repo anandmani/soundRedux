@@ -28,14 +28,24 @@ class Board extends Component{
           console.log(this.props.videosState);
 
           const videos = [...this.props.videosState[this.props.navState]];
-          const compare = function(a,b){
-            if(a.videoIndex.substring(0,6)<b.videoIndex.substring(0,6))
-              return -1;
-            else if(a.videoIndex.substring(0,6)==b.videoIndex.substring(0,6)){
-              return (+a.videoIndex.substring(6,a.videoIndex.length) - +b.videoIndex.substring(6,b.videoIndex.length));
+          const filter = (this.props.filterState == 1)? "videoIndex" : "likeCount";
+          var compare = null;
+
+          if(filter == "videoIndex"){   //This is order by Number of Views (Descending order of views).  When the API is called, it is as such returned in descending order of views. Therefore, we sort by ascending order of index.(including logic of pages)
+            compare = function(a,b){
+              if(a.videoIndex.substring(0,6)<b.videoIndex.substring(0,6))
+                return -1;
+              else if(a.videoIndex.substring(0,6)==b.videoIndex.substring(0,6)){
+                return (+a.videoIndex.substring(6,a.videoIndex.length) - +b.videoIndex.substring(6,b.videoIndex.length));
+              }
+              else
+                return 1;
             }
-            else
-              return 1;
+          }
+          else{ //If filter == likeCount   //This is order by descending order of likes
+            compare = function(a,b){
+              return (a.likeCount - b.likeCount)* -1;  //We are multiplying by -1 to make it descending order
+            }
           }
 
           videos.sort(compare);
@@ -57,6 +67,7 @@ const mapStateToProps= function(state){
     return({
               navState: state.navState,
               videosState:state.tabContentState,
+              filterState:state.filterState,
             });
 }
 
