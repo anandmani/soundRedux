@@ -22,10 +22,10 @@ body{
 #filterBar{
   background-color: white;
   padding-right: 10%;
-
   width:30%;
   display: inline-block;
 }
+/*Changing style of filter tabs to float right in js itself*/
 #logo{
   position: relative;
   display: inline-block;
