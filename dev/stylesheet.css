@@ -9,6 +9,9 @@ body{
 }
 #app{
   background-color: transparent;
+  position: fixed;
+  top:0;
+  bottom: 0;
 }
 #navBar{
   background-color: white;
@@ -137,8 +140,8 @@ body{
 .board{
   margin-left: 8%;
   margin-right: 8%;
-    height: 850px;
-    overflow-y: scroll;
+  height: 85%;
+  overflow-y: scroll;
 }
 .card{
   margin: 10px;
