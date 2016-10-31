@@ -6,10 +6,15 @@ import {Provider} from 'react-redux'; //this is required to persist store to all
 import allReducers from './reducers/allReducers.js';
 import App from './components/App';
 
+import {Router, Route, hashHistory, IndexRoute, browserHistory } from 'react-router';
+
 const store =new createStore(allReducers);
 
 ReactDOM.render(<Provider store={store}>
-                  <App />
+                  <Router history={browserHistory} >
+                    <Route path="/" component={App}/>
+                    <Route path="/:tab" component={App} />
+                  </Router>
                 </Provider>,
     document.getElementById('root')
 );

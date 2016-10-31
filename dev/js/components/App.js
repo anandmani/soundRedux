@@ -13,11 +13,13 @@ export default class App extends Component{
 
   render() {
     // console.log("Current state is:"+this.props.store); //undefined as store is no more a prop.
+    console.log("In app ");
+    console.log(this.props);
     return (
       <div id="app">
       <div id="player"></div>
         <Header/>
-        <NavBar/>
+        <NavBar {...this.props}/>
         <FilterBar/>
         <Content/>
         <Board/>
