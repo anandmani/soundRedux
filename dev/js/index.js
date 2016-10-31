@@ -12,7 +12,7 @@ const store =new createStore(allReducers);
 
 ReactDOM.render(<Provider store={store}>
                   <Router history={browserHistory} >
-                    <Redirect from="/" to="/1"/>
+                    <Redirect from="/soundRedux/src/" to="/1"/>
                     <Route path="/:tab" component={App} />
                   </Router>
                 </Provider>,
