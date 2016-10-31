@@ -6,13 +6,13 @@ import {Provider} from 'react-redux'; //this is required to persist store to all
 import allReducers from './reducers/allReducers.js';
 import App from './components/App';
 
-import {Router, Route, hashHistory, IndexRoute, browserHistory } from 'react-router';
+import {Router, Route, hashHistory, IndexRoute, browserHistory, Redirect } from 'react-router';
 
 const store =new createStore(allReducers);
 
 ReactDOM.render(<Provider store={store}>
                   <Router history={browserHistory} >
-                    <Route path="/" component={App}/>
+                    <Redirect from="/" to="/1"/>
                     <Route path="/:tab" component={App} />
                   </Router>
                 </Provider>,
