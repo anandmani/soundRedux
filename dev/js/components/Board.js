@@ -19,15 +19,15 @@ class Board extends Component{
       // console.log(this.refs.board.scrollHeight);
       if(this.refs.board.scrollTop+this.refs.board.offsetHeight==this.refs.board.scrollHeight){
         console.log("Scrolled to bottom of the page!");
-        this.props.fetchingAction("next page",this.props.navState);
+        this.props.fetchingAction("next page",+this.props.params.tab);
       }
   }
 
   render(){
-          console.log("board navstate"+this.props.navState);
+          console.log("board navstate"+ +this.props.params.tab);
           console.log(this.props.videosState);
 
-          const videos = [...this.props.videosState[this.props.navState]];
+          const videos = [...this.props.videosState[+this.props.params.tab]];
           const filter = (this.props.filterState == 1)? "videoIndex" : "likeCount";
           var compare = null;
 
@@ -65,7 +65,7 @@ class Board extends Component{
 
 const mapStateToProps= function(state){
     return({
-              navState: state.navState,
+              // navState: state.navState,
               videosState:state.tabContentState,
               filterState:state.filterState,
             });

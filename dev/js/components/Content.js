@@ -11,19 +11,19 @@ class Content extends Component{
 
   onContentFetch(response){
 
-      this.props.fetchingAction("fetched",this.props.navState);
+      this.props.fetchingAction("fetched",+this.props.params.tab);
 
       var that = this;
       console.log("Content fetched");
       console.log(response);
       console.log("Next page token: "+response.nextPageToken);
 
-      this.props.setNextPageTokenAction(this.props.navState,response.nextPageToken);
+      this.props.setNextPageTokenAction(+this.props.params.tab,response.nextPageToken);
 
       response.items.map(function(item, index){
 
       var videoMeta = {
-        videoIndex: that.props.nextPageState[that.props.navState]+(index+1), //Need to input logic for next page
+        videoIndex: that.props.nextPageState[+that.props.params.tab]+(index+1), //Need to input logic for next page
         videoTitle: item.snippet.title,
         videoId: item.id.videoId,
         videoDesc: item.snippet.description,
@@ -44,7 +44,7 @@ class Content extends Component{
         videoMeta.likeCount = response.items[0].statistics.likeCount;
         videoMeta.dislikeCount = response.items[0].statistics.dislikeCount;
         console.log(videoMeta);
-        that.props.tabContentAction(videoMeta, that.props.navState);
+        that.props.tabContentAction(videoMeta, +that.props.params.tab);
 
       });
 
@@ -53,11 +53,11 @@ class Content extends Component{
   }
   onYouTubeApiLoad(){//on loading GAPI client library for YouTube
 
-    if(this.props.navTitlesState[this.props.navState].status == "new"){
-          this.props.fetchingAction("fetching",this.props.navState);
-          var searchTitle = this.props.navTitlesState[this.props.navState].title;
+    if(this.props.navTitlesState[+this.props.params.tab].status == "new"){
+          this.props.fetchingAction("fetching",+this.props.params.tab);
+          var searchTitle = this.props.navTitlesState[+this.props.params.tab].title;
           if(searchTitle == "Search")
-            searchTitle = this.props.navTitlesState[this.props.navState].searchTitle;
+            searchTitle = this.props.navTitlesState[+this.props.params.tab].searchTitle;
           gapi.client.setApiKey("AIzaSyCSrcWsGzFXcm74Huk43YTAoWwYMpRXfYI");
           var request = gapi.client.youtube.search.list({
             part: "snippet",
@@ -68,13 +68,13 @@ class Content extends Component{
           })
           request.execute(this.onContentFetch.bind(this));
       }
-      else if(this.props.navTitlesState[this.props.navState].status == "next page" && this.props.nextPageState[this.props.navState].trim()!=""){  //mentioning this.props.nextPageState[this.props.navState].trim()!="" because of scroll bar bug in browser
+      else if(this.props.navTitlesState[+this.props.params.tab].status == "next page" && this.props.nextPageState[+this.props.params.tab].trim()!=""){  //mentioning this.props.nextPageState[+this.props.params.tab].trim()!="" because of scroll bar bug in browser
         console.log("nextpagetoken ");
-        console.log(this.props.nextPageState[this.props.navState]);
-        this.props.fetchingAction("fetching",this.props.navState);
-        var searchTitle = this.props.navTitlesState[this.props.navState].title;
+        console.log(this.props.nextPageState[+this.props.params.tab]);
+        this.props.fetchingAction("fetching",+this.props.params.tab);
+        var searchTitle = this.props.navTitlesState[+this.props.params.tab].title;
         if(searchTitle == "Search")
-          searchTitle = this.props.navTitlesState[this.props.navState].searchTitle;
+          searchTitle = this.props.navTitlesState[+this.props.params.tab].searchTitle;
         gapi.client.setApiKey("AIzaSyCSrcWsGzFXcm74Huk43YTAoWwYMpRXfYI");
         var request = gapi.client.youtube.search.list({
           part: "snippet",
@@ -82,12 +82,12 @@ class Content extends Component{
           order: "viewCount",
           q: searchTitle,
           maxResults: 20,
-          pageToken: this.props.nextPageState[this.props.navState]
+          pageToken: this.props.nextPageState[+this.props.params.tab]
         })
         request.execute(this.onContentFetch.bind(this));
       }
       else
-          this.props.fetchingAction("fetched",this.props.navState);   //this case happens when this.props.navTitlesState[this.props.navState].status == "next page" && this.props.nextPageState[this.props.navState].trim()=="" because of scroll bar bug. Making fetching action fetched to stop spinner.
+          this.props.fetchingAction("fetched",+this.props.params.tab);   //this case happens when this.props.navTitlesState[+this.props.params.tab].status == "next page" && this.props.nextPageState[+this.props.params.tab].trim()=="" because of scroll bar bug. Making fetching action fetched to stop spinner.
 
   }
 
@@ -107,7 +107,7 @@ class Content extends Component{
 
   render(){
     console.log("Inside Content - Render");
-    if(this.props.navTitlesState[this.props.navState].status == "new" || this.props.navTitlesState[this.props.navState].status == "next page")
+    if(this.props.navTitlesState[+this.props.params.tab].status == "new" || this.props.navTitlesState[+this.props.params.tab].status == "next page")
       gapi.load("client",this.onGapiLoad.bind(this));
 
     return(
@@ -119,7 +119,7 @@ class Content extends Component{
 
 const mapStateToProps = function(state){
   return({  //Subscribing the component only to the (sub)states mentioned in this object. not all (sub)states in the state-tree. When these states, change, the component re-renders.
-    navState: state.navState,
+    // navState: state.navState,
     navTitlesState: state.navTitlesState,
     nextPageState: state.nextPageState
   });

@@ -21,8 +21,8 @@ export default class App extends Component{
         <Header/>
         <NavBar {...this.props}/>
         <FilterBar/>
-        <Content/>
-        <Board/>
+        <Content {...this.props}/>
+        <Board {...this.props}/>
       </div>
     );
   }

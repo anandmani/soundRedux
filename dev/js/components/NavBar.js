@@ -29,11 +29,12 @@ class NavBar extends Component{
 
   render(){
     console.log("Inside NavBar - Render");
-    if(this.props.params.tab)
-      console.log(this.props.params.tab);
-    console.log("Active key is "+this.props.navState);
+    if(+this.props.params.tab)
+      console.log(+this.props.params.tab);
+      console.log(typeof(+this.props.params.tab));
+    console.log("Active key is "+ +this.props.params.tab);
     return( //activeKey should be a string so, type coercing it?? whyy? im making it int
-      <Nav id="navBar" bsStyle="tabs" activeKey={this.props.navState} onSelect={this.handleSelect.bind(this)}>
+      <Nav id="navBar" bsStyle="tabs" activeKey={+this.props.params.tab} onSelect={this.handleSelect.bind(this)}>
         {this.props.navTitlesState.map(this.generateNavTabs)}
       </Nav>
     );
@@ -45,7 +46,7 @@ class NavBar extends Component{
 const mapStateToProps = function(state){
   console.log("state"+state);
   return{
-      navState: state.navState,
+      // navState: state.navState,
       navTitlesState: state.navTitlesState
   }
 }
